@@ -1,5 +1,6 @@
 import assignments.datastructures.*;
 import assignments.sorting.*;
+import assignments.datastructures.KeyValuePair;
 
 public class Test {
     public static void main(String[] args) {
@@ -32,6 +33,7 @@ public class Test {
 
         // Test data structures.
         /* Call additional main routines as you create new data strutures. */
+        KeyValuePair.main(args);
 
         return true;
     }
