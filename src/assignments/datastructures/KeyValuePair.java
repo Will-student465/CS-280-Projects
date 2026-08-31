@@ -102,7 +102,7 @@ public class KeyValuePair<K, V> implements OrderedPair<K, V> {
      * @return true iff o is a key-value pair and its key equals that of this key-value pair
      */
     public boolean equals(Object o) {
-        return (o instanceof KeyValuePair) && this.key.equals(((KeyValuePair)o).key);
+        return (o instanceof KeyValuePair<?, ?>) && this.key.equals(((KeyValuePair<?, ?>)o).key);
     }
 
     /**
@@ -128,10 +128,10 @@ public class KeyValuePair<K, V> implements OrderedPair<K, V> {
      * @param args command-line args
      */
     public static void main(String[] args) {
-        OrderedPair.validate(new KeyValuePair("", 0));
+        OrderedPair.validate(new KeyValuePair<String, Integer>("", 0));
 
         // Create a specific key-value pair to test with.
-        KeyValuePair pair = new KeyValuePair("disciples", 12);
+        KeyValuePair<String, Integer> pair = new KeyValuePair<>("disciples", 12);
 
         // Test that we can mutate the value.
         assert pair.second().equals(12);
@@ -143,8 +143,8 @@ public class KeyValuePair<K, V> implements OrderedPair<K, V> {
         assert pair.hashCode() == "disciples".hashCode();
 
         // Test that equality is based on key but not on value.
-        assert pair.equals(new KeyValuePair("disciples", 12));
-        assert !pair.equals(new KeyValuePair("apostles", 11));
+        assert pair.equals(new KeyValuePair<String, Integer>("disciples", 12));
+        assert !pair.equals(new KeyValuePair<String, Integer>("apostles", 11));
 
         System.out.println("KeyValuePair passes all tests.");
     }
