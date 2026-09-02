@@ -30,7 +30,7 @@ public class BubblesSort extends SortingAlgorithm
      */
     private void swap(Integer[] array, int i, int j){
         Integer temp = array[i];
-        array[1] = array[j];
+        array[i] = array[j];
         array[j] = temp;
     }
 
