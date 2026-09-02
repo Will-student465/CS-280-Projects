@@ -30,7 +30,9 @@ public class Test {
     private static boolean runTests(String[] args) {
         // Test sorting algorithms.
         /* Call additional main routines here as you create new sorting algorithms. */
-        BubblesSort.main(args);
+        BubblesSort.main(args); // BubblesSort test
+        InsertionSort.main(args); // InsertionSort test
+        
         // Test data structures.
         /* Call additional main routines as you create new data strutures. */
         KeyValuePair.main(args);
