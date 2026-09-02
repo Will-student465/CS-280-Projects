@@ -4,8 +4,6 @@ package assignments.sorting;
 /** Sort an array in place using insertion sort
  * 
  * post -condition: array is sorted in ascending order
- * 
- * @param array an array of integers
  */
 
 public class InsertionSort extends SortingAlgorithm{
