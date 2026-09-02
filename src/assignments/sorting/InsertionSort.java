@@ -8,6 +8,8 @@ package assignments.sorting;
 
 public class InsertionSort extends SortingAlgorithm{
 
+    /**@param array an array of integers*/
+
     public void sort (Integer[] array) {
         for (int k = 1; k < array.length; k ++)  // k is the index of the element we are holding
             for (int i = k; i > 0; i --) {  // i compares backwards from k into the sorted portion
