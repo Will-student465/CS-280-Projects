@@ -1,7 +1,7 @@
 package assignments.sorting;
 
-/**Swap ajacent elements over and over until the whole array is sorted*/
-public class BubblesSort extends SortingAlgorithm
+/*Swap ajacent elements over and over until the whole array is sorted*/
+public class BubbleSort<T extends Comparable<T>> extends SortingAlgorithm<T> 
 {
 
     /**Sort an array in-place using bubble sort
@@ -10,11 +10,12 @@ public class BubblesSort extends SortingAlgorithm
      *
      * @param array an array of integers
      */
-    public void sort (Integer[] array) {
+    @Override
+    public void sort (T[] array) {
         for (int k = array.length; k >= 2; k --)    // K is the length of the sub array we are looping through in the innter loop
             for (int i = 0; i < (k - 1); i++) {  //Go up to k - one, because we don't need to compare the last index against its neighbor
-                if (array[i] > array [i+1]) {
-                    /**Swap ajacent items */
+                if (array[i].compareTo(array [i+1]) > 0) {
+                    /*Swap ajacent items */
                     swap(array, i, i+1);
                 }
             }
@@ -28,8 +29,8 @@ public class BubblesSort extends SortingAlgorithm
      * @param j the second index to swap
      * 
      */
-    private void swap(Integer[] array, int i, int j){
-        Integer temp = array[i];
+    private void swap(T[] array, int i, int j){
+        T temp = array[i];
         array[i] = array[j];
         array[j] = temp;
     }
@@ -39,26 +40,7 @@ public class BubblesSort extends SortingAlgorithm
      * @param args comman line args
      */
     public static void main(String[] args) {
-        SortingAlgorithm.validate (new BubblesSort());
+        SortingAlgorithm.validate (new BubbleSort<>());
         System.out.println("BubbleSort has passed all tests."); 
-
-        // fill an array with random numbers.
-        int N = 15000;
-        Integer[] array = new Integer[N];
-        for (int i = 0; i < array.length; i ++) {
-            array[i] = (int)(N*Math.random());
-        }
-        
-        // mwasuring runtime.
-        SortingAlgorithm sorter = new BubblesSort();
-        long start = System.nanoTime();
-        sorter.sort(array);
-        long end = System.nanoTime();
-        double duration = (end - start)/(1e9);
-
-        System.out.println("Array size: "+N);
-        System.out.println("Total duration: "+ duration);
-
-
     }
 }

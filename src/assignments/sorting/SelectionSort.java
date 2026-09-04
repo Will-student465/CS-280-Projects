@@ -1,6 +1,6 @@
 package assignments.sorting;
 
-public class SelectionSort extends SortingAlgorithm {
+public class SelectionSort<T extends Comparable<T>> extends SortingAlgorithm<T> {
 
 
     /**
@@ -11,12 +11,12 @@ public class SelectionSort extends SortingAlgorithm {
      * @param array of integers
      */
 
-    public void sort(Integer[] array) {
+    public void sort(T[] array) {
         for (int k = 0; k < array.length - 1; k ++) {   // k is the index we place the smallest element in
 
             int minIndex = k;         // we assume the smallest element is at k
             for (int i = k + 1; i < array.length; i ++) { // Find smallest element and put it in minIndex
-                if (array[i] < array[minIndex]) {
+                if (array[i].compareTo(array[minIndex])< 0) {
                     minIndex = i;
                 }
             }
@@ -34,8 +34,8 @@ public class SelectionSort extends SortingAlgorithm {
      * @param j the second index to swap
      */
 
-    private void swap(Integer[] array, int i, int j){
-        Integer temp = array[i];
+    private void swap(T[] array, int i, int j){
+        T temp = array[i];
         array[i] = array[j];
         array[j] = temp;
 
@@ -47,7 +47,7 @@ public class SelectionSort extends SortingAlgorithm {
      */
     
     public static void main(String[] args){
-        SortingAlgorithm.validate(new SelectionSort());
+        SortingAlgorithm.validate(new SelectionSort<>());
         System.out.println("SelectionSort has passed all tests.");
         }
 
