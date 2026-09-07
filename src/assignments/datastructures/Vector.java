@@ -36,7 +36,7 @@ public class Vector<T> implements List<T> {
      * @return the number of items
      */
     public int length() {
-        // TODO implement this method
+        // Returns size of Vector
         return size;
     }
     
@@ -49,7 +49,7 @@ public class Vector<T> implements List<T> {
         // You may use assert statements to enforce pre-conditions at runtime.
         assert 0 <= index && index < this.size;
 
-        // TODO implement this method
+        // Finds and returns element at array[index]
         return array[index];
     }
     
@@ -62,7 +62,7 @@ public class Vector<T> implements List<T> {
         // You may use assert statements to enforce pre-conditions at runtime.
         assert 0 <= index && index < this.size;
 
-        // TODO implement this method
+        // Sets value at array[index] to value
         array[index] = value;
         return ;
     }
@@ -73,8 +73,16 @@ public class Vector<T> implements List<T> {
      * @return true iff the collection contains value
      */
     public boolean contains(T value) {
-        // TODO implement this method
+        // Check for given value in array
+        for (int i = 0; i < this.size; i++) { // i increments through whole list
+            if (array[i].equals(value)) { // if given value is found, return true
+                return true;
+            }
+        }
+        
+        return false; // Otherwise, return false
     }
+
     
     /**
      * Insert an item into the list.
@@ -82,11 +90,23 @@ public class Vector<T> implements List<T> {
      * @param value the new value to put at the given location
      */
     public void insert(int index, T value) {
-        // You may use assert statements to enforce pre-conditions at runtime.
+        // You may use assert statements to enforce pre-condition at runtime
         // Note this function has a somewhat different pre-condition!
         assert 0 <= index && index <= this.size;
 
-        // TODO implement this method
+        // Prevent out of bounds indexs in case of no avaliable buffer space
+        if (this.size == array.length) {
+            throw new IllegalStateException("Vector is full: must resize");
+        }
+
+        // Move elements to right of index to make room for new value
+        for (int i = this.size; i > index; i--) {
+            array[i] = array [i - 1];
+        }
+        // Place new value into array
+        array[index] = value;
+        // Increase size of array to fit value
+        this.size++;
     }
     
     /**
@@ -98,8 +118,21 @@ public class Vector<T> implements List<T> {
         // You may use assert statements to enforce pre-conditions at runtime.
         assert 0 <= index && index < this.size;
 
-        // TODO implement this method
+        // Store value to be returned later
+        T DeletedElement = array[index];
+        // Shift element to right of vector
+        for (int i = index; i < size - 1; i++) { // where i starts at the given index and increments upwards
+        array[i] = array[i + 1];
     }
+        // delete last element
+        array[size - 1] = null;
+        // deincrement vector size 
+        size--;
+        // return deleted element
+        return DeletedElement;
+    }
+    
+
 
     /**
      * Resize the internal buffer array.
@@ -110,7 +143,13 @@ public class Vector<T> implements List<T> {
      */
     @SuppressWarnings("unchecked")
     private void resize(int newSize) {
-        // TODO implement this method. Take inspiration from the constructor implementation.
+        // Allowcate a new Vector with newSize space
+        T[] newArray = (T[])new Object[newSize];
+        
+        for (int i = 0; i < this.size; i++){ // i iterates through old Vector from 0 to end
+            newArray[i] = this.array[i]; // Puts data at every index of old Vector into alligning index's of new vector
+        }
+        this.array = newArray; // Reusing this.array to hold newArray so that this method may be reused
     }
 
     /**
