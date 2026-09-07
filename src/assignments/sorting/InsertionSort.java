@@ -5,7 +5,7 @@ package assignments.sorting;
  * 
  * post -condition: array is sorted in ascending order
  */
-
+/**@param <T> the type of each element */
 public class InsertionSort<T extends Comparable<T>> extends SortingAlgorithm<T>{
 
     /**@param array an array of "Comparable" elements*/

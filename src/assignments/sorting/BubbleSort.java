@@ -1,6 +1,7 @@
 package assignments.sorting;
 
 /*Swap ajacent elements over and over until the whole array is sorted*/
+/**@param <T> the type of each element */
 public class BubbleSort<T extends Comparable<T>> extends SortingAlgorithm<T> 
 {
 
