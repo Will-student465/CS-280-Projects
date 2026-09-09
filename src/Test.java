@@ -1,6 +1,5 @@
 import assignments.datastructures.*;
 import assignments.sorting.*;
-import assignments.datastructures.KeyValuePair;
 
 public class Test {
     public static void main(String[] args) {
@@ -29,16 +28,18 @@ public class Test {
 
     private static boolean runTests(String[] args) {
         // Test sorting algorithms.
+        BubbleSort.main(args); // BubblesSort test
+        InsertionSort.main(args); // InsertionSort test
+        SelectionSort.main(args); // SelectionSort test
         /* Call additional main routines here as you create new sorting algorithms. */
         
-        //BubbleSort.main(args); // BubblesSort test
-        //InsertionSort.main(args); // InsertionSort test
-        //SelectionSort.main(args); // SelectionSort test
+        KeyValuePair.main(args);
         Vector.main(args); // Vector test
 
         // Test data structures.
+        
         /* Call additional main routines as you create new data strutures. */
-        KeyValuePair.main(args);
+        
 
         return true;
     }
