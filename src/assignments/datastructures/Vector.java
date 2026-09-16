@@ -94,9 +94,9 @@ public class Vector<T> implements List<T> {
         // Note this function has a somewhat different pre-condition!
         assert 0 <= index && index <= this.size;
 
-        // Prevent out of bounds indexs in case of no avaliable buffer space
+        // resize if array runs out of buffer space
         if (this.size == array.length) {
-            throw new IllegalStateException("Vector is full: must resize");
+            resize(this.length() * 2);
         }
 
         // Move elements to right of index to make room for new value
@@ -122,8 +122,8 @@ public class Vector<T> implements List<T> {
         T DeletedElement = array[index];
         // Shift element to right of vector
         for (int i = index; i < size - 1; i++) { // where i starts at the given index and increments upwards
-        array[i] = array[i + 1];
-    }
+            array[i] = array[i + 1];
+        }
         // delete last element
         array[size - 1] = null;
         // deincrement vector size 
