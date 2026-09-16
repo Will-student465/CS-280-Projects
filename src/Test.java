@@ -37,7 +37,7 @@ public class Test {
         Vector.main(args); // Vector test
 
         // Test data structures.
-        
+        LinkedList.main(args);
         /* Call additional main routines as you create new data strutures. */
         
 
