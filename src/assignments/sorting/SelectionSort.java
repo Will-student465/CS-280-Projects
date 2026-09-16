@@ -1,6 +1,8 @@
 package assignments.sorting;
 
-/**@param <T> the type of each element */
+/**
+ * @param <T> the type of each element 
+ */
 public class SelectionSort<T extends Comparable<T>> extends SortingAlgorithm<T> {
 
 

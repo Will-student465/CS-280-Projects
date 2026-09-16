@@ -1,14 +1,18 @@
 package assignments.sorting;
 
 
-/** Sort an array in place using insertion sort
+/** 
+ * Sort an array in place using insertion sort
  * 
  * post -condition: array is sorted in ascending order
+ * 
+ * @param <T> the type of each element
  */
-/**@param <T> the type of each element */
 public class InsertionSort<T extends Comparable<T>> extends SortingAlgorithm<T>{
 
-    /**@param array an array of "Comparable" elements*/
+    /**
+     * @param array an array of "Comparable" elements
+     */
 
     public void sort (T[] array) {
         for (int k = 1; k < array.length; k ++)  // k is the index of the element we are holding
