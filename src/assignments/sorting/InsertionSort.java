@@ -2,15 +2,17 @@ package assignments.sorting;
 
 
 /** 
- * Sort an array in place using insertion sort
- * 
- * post -condition: array is sorted in ascending order
+ * Sort a list one element at a time by comparing each element to every element to the left of it until it is in the right place
  * 
  * @param <T> the type of each element
  */
 public class InsertionSort<T extends Comparable<T>> extends SortingAlgorithm<T>{
 
     /**
+     * Sort an array in place using insertion sort
+     * 
+     * Post -condition: array is sorted in ascending order
+     * 
      * @param array an array of "Comparable" elements
      */
 
@@ -21,7 +23,7 @@ public class InsertionSort<T extends Comparable<T>> extends SortingAlgorithm<T>{
                     swap(array, i, i-1); 
                 } 
                 else {
-                    break; // break here because element is already in the right placce
+                    break; // break here because element is already in the right place
                 }
 
             }
@@ -33,7 +35,6 @@ public class InsertionSort<T extends Comparable<T>> extends SortingAlgorithm<T>{
      * @param array the array to swap values in
      * @param i the first index to swap
      * @param j the second index to swap
-     * 
      */
 
     private void swap(T[] array, int i, int j){

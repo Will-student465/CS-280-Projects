@@ -1,17 +1,19 @@
 package assignments.sorting;
 
 /**
+ * Sort a list by repeatedly finding the smallest unsorted element and swapping it into the correct position
+ * 
  * @param <T> the type of each element 
  */
 public class SelectionSort<T extends Comparable<T>> extends SortingAlgorithm<T> {
 
 
     /**
-     * Sort an array from left to right using selection sort
+     * Sort an array in place using selection sort
      * 
      * post -condition: array is sorted in ascending order
      * 
-     * @param array of integers
+     * @param array an array of integers
      */
 
     public void sort(T[] array) {
