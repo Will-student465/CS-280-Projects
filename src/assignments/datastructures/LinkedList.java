@@ -37,7 +37,6 @@ public class LinkedList<T> implements List<T> {
     
     /**
      * Fetch an item from the list.
-     * @param cursor the object used to iterate through Nodes in a Linked List
      * @param index the location of the item - a nonnegative integer less than the length of the list
      * @return the value stored at the given location
      */
@@ -54,7 +53,6 @@ public class LinkedList<T> implements List<T> {
     
     /**
      * Change an item in the list.
-     * @param cursor the object used to iterate through Nodes in a Linked List
      * @param index the location of the item - a nonnegative integer less than the length of the list
      * @param value the new value to assign at the given location
      */
@@ -74,7 +72,6 @@ public class LinkedList<T> implements List<T> {
     
     /**
      * Check if the list contains a given value.
-     * @param cursor the object used to iterate through Nodes in a Linked List
      * @param value the value to look for
      * @return true iff the collection contains value
      */
@@ -92,9 +89,6 @@ public class LinkedList<T> implements List<T> {
     
     /**
      * Insert an item into the list.
-     * @param temp the variable used to store value
-     * @param newNode the variable used to insert a new node
-     * @param cursor the object used to iterate through Nodes in a Linked List
      * @param index the location of where to put the item - a nonnegative integer less than or equal to the length of the list
      * @param value the new value to put at the given location
      */
@@ -120,8 +114,6 @@ public class LinkedList<T> implements List<T> {
     
     /**
      * Remove an item from the list.
-     * @param delete the variable used to store and delete data at a given index
-     * @param cursor the object used to iterate through Nodes in a linked list
      * @param index the location to delete from - a nonnegative integer less than the length of the list
      * @return the value which was removed
      */
