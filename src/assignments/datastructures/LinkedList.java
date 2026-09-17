@@ -39,11 +39,10 @@ public class LinkedList<T> implements List<T>, Iterable<T> {
 
 
     
-    /** 
-     * Implement Iterator class
-     * 
-     * post-condition: Iterator iterates through a LinkedList of any size, returning each element and terminating upon reaching end of list. && Iterator passes all tests
-     */
+     
+    // Implement Iterator class
+    // 
+    // post-condition: Iterator iterates through a LinkedList of any size, returning each element and terminating upon reaching end of list. && Iterator passes all tests
     public Iterator<T> iterator() {
         return new Iterator<T>() {
             Node cursor = head;
