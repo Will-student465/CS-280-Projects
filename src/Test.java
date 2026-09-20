@@ -38,6 +38,7 @@ public class Test {
 
         // Test data structures.
         LinkedList.main(args);
+        CircularLinkedList.main(args);
         /* Call additional main routines as you create new data strutures. */
         
 
