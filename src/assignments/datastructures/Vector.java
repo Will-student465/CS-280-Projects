@@ -4,6 +4,8 @@ import java.util.Iterator;
 
 import adt.List;
 
+import adt.Stack;
+
 /// An extensible list backed by an array buffer.
 /// 
 /// The idea here is to store your data in an array larger than it has to be.
@@ -15,7 +17,7 @@ import adt.List;
 /// This is a very expensive operation, so you want to make sure it occurs very infrequently.
 /// 
 /// @param <T> the type of each element
-public class Vector<T> implements List<T>, Iterable<T> {
+public class Vector<T> implements List<T>, Iterable<T>, Stack<T> {
     /** The initial amount of buffer space in a newly-created vector. */
     public static final int INITIAL_BUFFER_SIZE = 10;
     private T[] array;
@@ -32,6 +34,45 @@ public class Vector<T> implements List<T>, Iterable<T> {
         this.array = (T[])(new Object[INITIAL_BUFFER_SIZE]);
         this.size = 0;
     }
+
+
+
+    /**
+     * Check if the stack is empty
+     * 
+     * @return True if stack is empty, otherwise return false
+     */
+    public boolean isEmpty() {
+        return array[0] == null;
+    }
+
+    /**
+     * "peek" at stack to see what element is on top
+     * 
+     * @return element on top
+     */
+    public T peek() {
+        return array[this.length() - 1];
+    }
+
+    /**
+     * delete the element on top of the stack
+     * 
+     * @return the deleted element
+     */
+    public T pop() {
+        return delete(this.length() - 1);
+    }
+
+    /**
+     * add an element to the top of the stack
+     * 
+     * @param value the value to be added to the stack
+     */
+    public void push(T value) {
+        insert(this.length(), value);
+    }
+
 
 
     public Iterator<T> iterator() {
@@ -178,6 +219,7 @@ public class Vector<T> implements List<T>, Iterable<T> {
      */
     public static void main(String[] args) {
         List.validate(new Vector<>());
+        Stack.validate(new Vector<>());
 
         // Test iterator.
         Vector<Integer> vector = new Vector<>();

@@ -4,6 +4,8 @@ import java.util.Iterator;
 
 import adt.List;
 
+import adt.Stack;
+
 /// An extensible list backed by a chain of nodes.
 /// 
 /// The idea here is to wrap each datum in a larger structure, a *node*,
@@ -16,7 +18,7 @@ import adt.List;
 ///  one must first traverse through the chain of nodes from the beginning of the list.
 /// 
 /// @param <T> the type of each element
-public class LinkedList<T> implements List<T>, Iterable<T> {
+public class LinkedList<T> implements List<T>, Iterable<T>, Stack<T> {
     private Node head;
     private int size;
 
@@ -29,6 +31,59 @@ public class LinkedList<T> implements List<T>, Iterable<T> {
     }
 
     /**
+     * Check if the stack is empty
+     * 
+     * @return True if stack is empty, otherwise return false
+     */
+    public boolean isEmpty() {
+        return (head == null);
+    }
+
+
+    /**
+     * "peek" at stack to see what element is on top
+     * 
+     * @return element on top
+     */
+    public T peek() {
+        if (isEmpty()) {
+            throw new java.util.NoSuchElementException();
+        }
+
+        Iterator<T> it = iterator();
+        T value = null;
+
+        while (it.hasNext()) {
+            value = it.next();
+        }
+
+        return value;
+    }
+
+    /**
+     * delete the element on top of the stack
+     * 
+     * @return the deleted element
+     */
+    public T pop() {
+        if (isEmpty()) {
+            throw new java.util.NoSuchElementException();
+        }
+        return delete(this.length() - 1);
+    }
+
+    /**
+     * add an element to the top of the stack
+     * 
+     * @param value the value to be added to the stack
+     */
+    public void push(T value) {
+        insert(this.length(), value);
+    }
+
+
+
+    /**
      * Compute the number of items in this list.
      * @return the number of items
      */
@@ -37,8 +92,6 @@ public class LinkedList<T> implements List<T>, Iterable<T> {
         return size; 
     }
 
-
-    
      
     // Implement Iterator class
     // 
@@ -185,6 +238,7 @@ public class LinkedList<T> implements List<T>, Iterable<T> {
      */
     public static void main(String[] args) {
         List.validate(new LinkedList<>());
+        Stack.validate(new LinkedList<>());
 
         // Test iterator.
         LinkedList<Integer> list = new LinkedList<>();
