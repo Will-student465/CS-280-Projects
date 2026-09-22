@@ -74,14 +74,19 @@ public class Vector<T> implements List<T>, Iterable<T>, Stack<T> {
     }
 
 
-
+    /** 
+     * Returns an iterator over each element in a Vector using increasing indexes.
+     * 
+     * @return the iterator over each element in the Vector
+     * @see java.lang.Iterable#iterator()
+     */
     public Iterator<T> iterator() {
         return new Iterator<T>() {
             int cursor = 0;
-            public boolean hasNext() {
+            public boolean hasNext() {  // checks if there is another index behind the current one
                 return cursor < size;
             }
-            public T next() {
+            public T next() {  // moves cursor to the next index in the array
                 if (!hasNext()) {
                     throw new java.util.NoSuchElementException();
                 }

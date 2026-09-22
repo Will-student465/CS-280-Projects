@@ -93,16 +93,19 @@ public class LinkedList<T> implements List<T>, Iterable<T>, Stack<T> {
     }
 
      
-    // Implement Iterator class
-    // 
-    // post-condition: Iterator iterates through a LinkedList of any size, returning each element and terminating upon reaching end of list. && Iterator passes all tests
+    /**  
+     * Returns the iterator over each element in the LinkedList from the head to the end
+     * 
+     * @return the iterator as it passes over all elements in the LinkedList
+     * @see java.lang.Iterable#iterator()
+     */
     public Iterator<T> iterator() {
         return new Iterator<T>() {
             Node cursor = head;
-            public boolean hasNext() {
+            public boolean hasNext() {  // checks if there is another node behind the current one
                 return cursor != null;
             }
-            public T next() {
+            public T next() {  // moves cursor to the next node in the LinkedList
                 if (!hasNext()) {
                     throw new java.util.NoSuchElementException();
                 }
