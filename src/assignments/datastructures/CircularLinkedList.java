@@ -4,9 +4,11 @@ import java.util.Iterator;
 
 import adt.List;
 
+import adt.Queue;
+
 
 /// @param <T> The type of each element
-public class CircularLinkedList<T> implements List<T>, Iterable<T> {
+public class CircularLinkedList<T> implements List<T>, Iterable<T>, Queue<T> {
     private Node tail;
     private int size;
 
@@ -20,9 +22,55 @@ public class CircularLinkedList<T> implements List<T>, Iterable<T> {
     }
 
 
-    // Implement Iterator class
-    // 
-    // post-condition: Iterator iterates through a CircularLinkedList of any size, returning each element and terminating upon reaching end of list. && Iterator passes all tests
+
+    /**
+     * Deletes the element in the head of the Queue
+     * 
+     * @see adt.Queue#dequeue()
+     */
+    public T dequeue() {
+        return delete(0);
+    }
+
+    /**
+     *  Add an element to the start of the Queue
+     * 
+     * @see adt.Queue#enqueue(java.lang.Object)
+     */
+    public void enqueue(T value) {
+        insert(size, value);
+    }
+
+    /**
+     * Checks if the Queue is empty
+     * 
+     * @return True if the Queue is empty, otherwise, false
+     * @see adt.Queue#isEmpty()
+     */
+    public boolean isEmpty() {
+        return (size == 0);
+    }
+
+    /**
+     * Reports the next item that can be removed from the Queue
+     * 
+     * @return The element that can be removed next
+     * @see adt.Queue#peek()
+     */
+    public T peek() {
+        return tail.link.data;
+    }
+
+
+
+
+
+    /** 
+     * Returns an iterator over each element in a CircularLinkedList using increasing indexes.
+     * 
+     * @return the iterator over each element in the CircularLinkedList
+     * @see java.lang.Iterable#iterator()
+     */
     public Iterator<T> iterator() {
         return new Iterator<T>() {
             Node cursor;
@@ -217,6 +265,7 @@ public class CircularLinkedList<T> implements List<T>, Iterable<T> {
      */
     public static void main(String[] args) {
         List.validate(new CircularLinkedList<>());
+        Queue.validate(new CircularLinkedList<>());
 
         // Test iterator.
         CircularLinkedList<Integer> list = new CircularLinkedList<>();
