@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Split data into subclasses and then recursively merge them together
  * 
- * @param <T>
+ * @param <T> The type of element
  */
 public class MergeSort<T extends Comparable<T>> extends SortingAlgorithm<T> {
 
@@ -104,7 +104,7 @@ public class MergeSort<T extends Comparable<T>> extends SortingAlgorithm<T> {
 
     /**
      * Run validation tests
-     * @param args
+     * @param args command line args
      */
     public static void main(String[] args) {
         SortingAlgorithm.validate(new MergeSort<>());

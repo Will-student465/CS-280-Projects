@@ -34,7 +34,7 @@ public class QuickSort<T extends Comparable<T>> extends SortingAlgorithm<T> {
      * then recursively sort the paritions until list is sorted
      * 
      * @param array
-     * @return
+     * @return a new list of sorted elements
      */
     private List<T> QuickSortalgorithm(List<T> array) {
         if (array.size() <= 1) {
@@ -74,7 +74,7 @@ public class QuickSort<T extends Comparable<T>> extends SortingAlgorithm<T> {
 
     /**
      * Run validation tests
-     * @param args
+     * @param args command line args
      */
     public static void main(String[] args) {
         SortingAlgorithm.validate(new QuickSort<>());

@@ -7,7 +7,11 @@ import adt.List;
 import adt.Queue;
 
 
-/// @param <T> The type of each element
+/**
+ * Implement a CircularLinkedList
+ * 
+ * @param <T> the type of each element
+ */
 public class CircularLinkedList<T> implements List<T>, Iterable<T>, Queue<T> {
     private Node tail;
     private int size;
@@ -25,8 +29,6 @@ public class CircularLinkedList<T> implements List<T>, Iterable<T>, Queue<T> {
 
     /**
      * Deletes the element in the head of the Queue
-     * 
-     * @see adt.Queue#dequeue()
      */
     public T dequeue() {
         return delete(0);
@@ -34,8 +36,6 @@ public class CircularLinkedList<T> implements List<T>, Iterable<T>, Queue<T> {
 
     /**
      *  Add an element to the start of the Queue
-     * 
-     * @see adt.Queue#enqueue(java.lang.Object)
      */
     public void enqueue(T value) {
         insert(size, value);
