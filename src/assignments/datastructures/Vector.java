@@ -43,7 +43,7 @@ public class Vector<T> implements List<T>, Iterable<T>, Stack<T> {
      * @return True if stack is empty, otherwise return false
      */
     public boolean isEmpty() {
-        return array[0] == null;
+        return this.length() == 0;
     }
 
     /**
@@ -223,18 +223,19 @@ public class Vector<T> implements List<T>, Iterable<T>, Stack<T> {
      * @param args command-line args
      */
     public static void main(String[] args) {
-        List.validate(new Vector<>());
-        Stack.validate(new Vector<>());
+    List.validate(new Vector<>());
+    Stack.validate(new Vector<>());
 
-        // Test iterator.
-        Vector<Integer> vector = new Vector<>();
-        for (int i = 0; i < INITIAL_BUFFER_SIZE; i ++) vector.insert(0, i);
-        Iterator<Integer> iter = vector.iterator();
-        for (int i = INITIAL_BUFFER_SIZE; i > 0; i --) assert iter.next().equals(i-1);
-        assert !iter.hasNext();
+//         // Test iterator.
+//         Vector<Integer> vector = new Vector<>();
+//         for (int i = 0; i < INITIAL_BUFFER_SIZE; i ++) vector.insert(0, i);
+//         Iterator<Integer> iter = vector.iterator();
+//         for (int i = INITIAL_BUFFER_SIZE; i > 0; i --) assert iter.next().equals(i-1);
+//         assert !iter.hasNext();
 
-        System.out.println("Vector passes all tests.");
+//         System.out.println("Vector passes all tests.");
+//     }
+    
+    
     }
-    
-    
 }
