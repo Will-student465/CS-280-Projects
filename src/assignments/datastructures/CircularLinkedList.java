@@ -45,7 +45,6 @@ public class CircularLinkedList<T> implements List<T>, Iterable<T>, Queue<T> {
      * Checks if the Queue is empty
      * 
      * @return True if the Queue is empty, otherwise, false
-     * @see adt.Queue#isEmpty()
      */
     public boolean isEmpty() {
         return (size == 0);
@@ -55,7 +54,6 @@ public class CircularLinkedList<T> implements List<T>, Iterable<T>, Queue<T> {
      * Reports the next item that can be removed from the Queue
      * 
      * @return The element that can be removed next
-     * @see adt.Queue#peek()
      */
     public T peek() {
         return tail.link.data;
@@ -69,7 +67,6 @@ public class CircularLinkedList<T> implements List<T>, Iterable<T>, Queue<T> {
      * Returns an iterator over each element in a CircularLinkedList using increasing indexes.
      * 
      * @return the iterator over each element in the CircularLinkedList
-     * @see java.lang.Iterable#iterator()
      */
     public Iterator<T> iterator() {
         return new Iterator<T>() {

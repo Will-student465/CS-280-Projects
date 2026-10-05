@@ -1,105 +1,107 @@
 package assignments.sorting;
 
-import java.util.ArrayList;
-import java.util.List;
+import assignments.datastructures.Vector;
 
 
 /**
- * Split data into subclasses and then recursively merge them together
+ * Recursively Split data into subarrays and then merge them together in sorted order
  * 
  * @param <T> The type of element
  */
 public class MergeSort<T extends Comparable<T>> extends SortingAlgorithm<T> {
 
-
+    /**  
+     * Sort an array using mergeSort.
+     * the array is copied into a new array for easy use and allocates another to use during merging
+     * 
+     * @param array the array to be sorted
+     */
     public void sort (T[] array) {
-        List<T> sorted = new ArrayList<>();
-        for (T i : array) {
-            sorted.add(i);
+        Vector<T> vector = new Vector<>();
+        for (int i = 0; i < array.length; i++) {
+            vector.insert(i, array[i]) ;
+
         }
 
-        List<T> sortedList = Split(sorted);
 
-        for (int i = 0; i < sortedList.size(); i ++) {
-            array[i] = sortedList.get(i);
+        Vector<T> temp = new Vector<>();
+        for (int i = 0; i < array.length; i++) {
+            temp.insert(i, null);
+        }
+
+        mergeSort(vector, temp, 0, array.length - 1);
+
+        // copies sorted array into user array
+        for (int i = 0; i < array.length; i++){
+            array[i] = vector.at(i);
         }
     }
 
 
     /**
-     * Split the array into many arrays of length one with recursion
+     * Generates reqursive calls of mergeSort to split the array until each subarray has only one element,
+     * then merges them back together
      * 
-     * then calls Merge method
      * 
-     * @param array The list to be split
-     * @return a call to Merge method
+     * @param vector the array to be sorted
+     * @param temp another array used to make merging easier
+     * @param left starting index of the subarray
+     * @param right last index of the subarray
      */
-    private List<T> Split(List<T> array) {
-        if (array.size() <= 1) {
-            return array;
+    private void mergeSort(Vector<T> vector, Vector<T> temp, int left, int right) {
+        if (left < right) {
+            int mid = (left + right) / 2;
+
+            // calls mergeSort on left and right ranges of the array
+            mergeSort(vector, temp, left, mid);
+            mergeSort(vector, temp, mid + 1, right);
+
+            // merge only starts after recursive mergeSort calls end
+            merge(vector, temp, left, mid, right);
         }
-        
-
-        int mid = array.size() / 2;
-
-
-        List<T> leftparition = new ArrayList<>();
-        List<T> rightparition = new ArrayList<>();
-
-
-        for (int i = 0; i < mid; i++) {
-            leftparition.add(array.get(i));
-        }
-        for (int i = mid; i < array.size(); i++) {
-            rightparition.add(array.get(i));
-        }
-
-        List<T> sortedL = Split(leftparition);
-        List<T> sortedR = Split(rightparition);
-
-        return Merge(sortedL, sortedR);
     }
-
 
     /**
-     * Merge two lists and sort them into one
+     * merges the two sorted subarrays into a single sorted array
      * 
-     * 
-     * @param left The left parition to be merged and sorted
-     * @param right The right parition to be merged and sorted
-     * @return finalist the merged and sorted list
+     * @param vector the array to be sorted
+     * @param temp another array used to make merging easier
+     * @param left starting index of the left subarray
+     * @param mid last inxed of the left subarray
+     * @param right last index of the right subarray
      */
-    private List<T> Merge(List<T> left, List<T> right) {
-        List<T> finalist = new ArrayList<>();
+    private void merge(Vector<T> vector, Vector<T> temp, int left, int mid, int right) {
 
-        int i = 0;
-        int j = 0;
-        
 
-        while (i < left.size() && j < right.size()){
-            if (left.get(i).compareTo(right.get(j)) <= 0) {
-                finalist.add(left.get(i));
-                i++;
+        for (int i = left; i <= right; i++) {
+            temp.set(i, vector.at(i));
+        }
+
+
+        int l = left; // the nex index to compare with m
+        int m = mid + 1; // the index to compare to l
+        int la = left; // the index to be modified next
+
+
+        while (l <= mid && m <= right) {
+            if (temp.at(l).compareTo(temp.at(m)) <= 0) {
+                vector.set(la, temp.at(l));
+                l++;
             }
-            else{
-                finalist.add(right.get(j));
-                j++;
+            else {
+                vector.set(la, temp.at(m));
+                m++;
             }
+            la++;
         }
 
 
-        for (int t = i; t < left.size(); t++){
-            finalist.add(left.get(t));
+        while (l <= mid) {
+            vector.set(la, temp.at(l)) ;
+            la++; 
+            l++;
         }
-        for (int y = j; y < right.size(); y++) {
-            finalist.add(right.get(y));
-        }
-
-        return finalist;
     }
-
-
-
 
 
     /**
