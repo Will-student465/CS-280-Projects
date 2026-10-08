@@ -269,6 +269,116 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
         return this.inorder();
     }
 
+
+
+    /**
+     * Add an element to a Binary Search tree 
+     * use recursion to find where the element belongs in the tree.
+     * 
+     * @param value the element to be added
+     * @return True after the value is added
+     */
+    public boolean add(T value) {
+        if (this.root == null) this.root = new Node(value);
+        
+
+        return addHelper(this.root, value);
+    }
+
+    /**
+     * Compares left and right to decide which branch the element to be added belongs on.
+     * 
+     * 
+     * @param cursor the function's current location in the tree
+     * @param value the value to be added
+     * @return True once the value is added
+     */
+    private boolean addHelper(Node cursor, T value) {
+        
+        if (cursor.data.compareTo(value) <= 0) {
+            if (cursor.right == null) {
+                cursor.right = new Node(value);
+                return true;
+            }
+            return addHelper(cursor.right, value);
+        }
+        else {
+            if (cursor.left == null){
+                cursor.left = new Node(value);
+                return true;
+            }
+            return addHelper(cursor.left, value);
+        }
+    }
+        
+    
+    /**
+     * removes the given element from the tree using recursion to find the element.
+     * 
+     * @param value the value to be removed
+     * @return true if the value exists and is removed, otherwise false
+     */
+    public boolean remove(T value) {
+        if (!contains(value)) {
+            return false;
+        }
+        this.root = removeHelper(this.root, value);
+        return true;
+    }
+
+    /**
+     * uses recursion to navigate and find the first element of that value
+     * then removes it and moves any data below it into place
+     * 
+     * @param cursor the function's current position in the tree
+     * @param value the element to be added
+     * @return true if the value exists and is removed, otherwise false
+     */
+    private Node removeHelper(Node cursor, T value) {
+        if (cursor == null) return null;
+
+        if (value.compareTo(cursor.data) < 0) {
+            cursor.left = removeHelper(cursor.left, value);
+        }
+        else if (value.compareTo(cursor.data) > 0) {
+            cursor.right = removeHelper(cursor.right, value);
+        }
+        else {
+            if (cursor.left == null && cursor.right == null) {
+                return null;
+            }
+
+            if (cursor.left == null) return cursor.right;
+            
+            if (cursor.right == null) return cursor.left;
+
+            Node next = cursor.right;
+            while (next.left != null) {
+                next = next.left;
+            }
+
+            cursor.data = next.data;
+            cursor.right = removeHelper(cursor.right, next.data);
+        }
+        
+        return cursor;
+    }
+
+    /**
+     * checks for a given element in a Binary Search Tree
+     * 
+     * @param value the value to be searched for
+     * @return true if the value is in the tree, otherwise false
+     */
+    public boolean contains(T value) {
+        Iterator<T> cursor = this.levelorder();
+
+        while (cursor.hasNext()) {
+            if (cursor.next().compareTo(value) == 0) return true;
+        }
+        return false;
+    }
+
     // NOTE: You're going to add more public methods here on the second day of trees.
     
     /**
@@ -313,6 +423,23 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
         assert testTraversal(tree.postorder(),  new int[]{-6, -5, -5, -6, -6, -4, -3, -3, -3, 3, 0, 0, -4, 5, 4});
         assert testTraversal(tree.levelorder(), new int[]{4, -4, 5, -6, 0, -6, -3, 0, -5, -4, -3, 3, -6, -5, -3});
         assert testTraversal(tree.iterator(),   new int[]{-6, -6, -6, -5, -5, -4, -4, -3, -3, -3, 0, 0, 3, 4, 5});
+
+
+        // Test tree modifier methods.
+        assert !tree.contains(15);
+        assert tree.contains(-5);
+        assert tree.contains(3);
+        assert !tree.contains(12);
+
+        tree.add(15);
+        assert tree.contains(15);
+        tree.add(7777);
+        assert tree.contains(7777);
+
+        tree.remove(15);
+        assert !tree.contains(15);
+        tree.remove(7777);
+        assert !tree.contains(7777);
 
         System.out.println("BinarySearchTree passes all tests.");
     }
