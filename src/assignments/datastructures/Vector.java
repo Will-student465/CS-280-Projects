@@ -185,7 +185,7 @@ public class Vector<T> implements List<T>, Iterable<T>, Stack<T> {
         assert 0 <= index && index < this.size;
 
         // Store value to be returned later
-        T DeletedElement = array[index];
+        T deletedElement = array[index];
         // Shift element to right of vector
         for (int i = index; i < size - 1; i++) { // where i starts at the given index and increments upwards
             array[i] = array[i + 1];
@@ -195,7 +195,7 @@ public class Vector<T> implements List<T>, Iterable<T>, Stack<T> {
         // deincrement vector size 
         size--;
         // return deleted element
-        return DeletedElement;
+        return deletedElement;
     }
     
 
