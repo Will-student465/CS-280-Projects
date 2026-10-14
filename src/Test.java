@@ -39,6 +39,7 @@ public class Test {
         Vector.main(args); // Vector test
 
         // Test data structures.
+        MinHeap.main(args);
         PriorityEnqueuer.main(args);
         PriorityDequeuer.main(args);
         LinkedList.main(args);
