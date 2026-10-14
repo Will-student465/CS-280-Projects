@@ -14,7 +14,7 @@ public class MinHeap<T extends Comparable<T>> extends Vector<T> implements adt.P
     /** 
      * enqueues a value to the end of the Vector and calls "enqueueHelper" to ensure post condition is met.
      * 
-     * post conditions - No parent element can be greater than either of its children && the tree is filled in level order
+     * post conditions - No parent element can be greater than either of its children and the tree is filled in level order
      * 
      * @param value the element to be enqueued
      */
@@ -27,7 +27,7 @@ public class MinHeap<T extends Comparable<T>> extends Vector<T> implements adt.P
     /**
      * checks if the element at given index meets post condition, and swaps it with its parent element if it does not. then recursively repeats this operation until post condition is met for the whole tree.
      * 
-     * post conditions - No parent element can be greater than either of its children && the tree is filled in level order
+     * post conditions - No parent element can be greater than either of its children and the tree is filled in level order
      * 
      * @param index the index of the elemnt that may be swapped with its parent
      */
@@ -46,7 +46,7 @@ public class MinHeap<T extends Comparable<T>> extends Vector<T> implements adt.P
      * Removes the element at index 0 and replaces it with the element at last index in Vector,
      * then calls dequeueHelper to enforce post condition.
      * 
-     * post conditions - No parent element can be greater than either of its children && the tree is filled in level order
+     * post conditions - No parent element can be greater than either of its children and the tree is filled in level order
      * 
      * @return the value that was dequeued
      */
