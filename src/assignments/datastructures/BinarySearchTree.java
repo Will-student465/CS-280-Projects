@@ -279,7 +279,10 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
      * @return True after the value is added
      */
     public boolean add(T value) {
-        if (this.root == null) this.root = new Node(value);
+        if (this.root == null) {
+            this.root = new Node(value);
+            return true;
+        }
         
 
         return addHelper(this.root, value);
