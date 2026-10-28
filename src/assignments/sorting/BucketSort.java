@@ -3,13 +3,18 @@ package assignments.sorting;
 public class BucketSort extends SortingAlgorithm<Integer> {
     
 
+    /**
+     * Sorts an array by counting each element into an array of "buckets" to be dumped back into the array in sorted order
+     * 
+     * @param array the array of integers to be sorted
+     */
     public void sort(Integer[] array) {
 
-        if (array == null || array.length <= 1) {
+        if (array == null || array.length <= 1) { // checks if array can be sorted
             return;
         }
 
-        int min = array[0];
+        int min = array[0]; 
 
         int max = array[0];
 
@@ -22,9 +27,9 @@ public class BucketSort extends SortingAlgorithm<Integer> {
 
         int arraySize = max - min + 1;
 
-        int[] buckets = new int[arraySize];
+        int[] buckets = new int[arraySize]; // allocates an array of "Buckets" with each index being a valuebucket between min and max
 
-        // iterates each index("bucket") according to number of values in origional array
+        // iterates each index("bucket") according to number of values in original array
         for (int i = 0; i < array.length; i++) {
 
             buckets[array[i] - min]++;
