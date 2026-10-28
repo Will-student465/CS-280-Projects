@@ -19,8 +19,7 @@ public class MergeSort<T extends Comparable<T>> extends SortingAlgorithm<T> {
     public void sort (T[] array) {
         Vector<T> vector = new Vector<>();
         for (int i = 0; i < array.length; i++) {
-            vector.insert(i, array[i]) ;
-
+            vector.insert(i, array[i]);
         }
 
 

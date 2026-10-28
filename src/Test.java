@@ -28,6 +28,7 @@ public class Test {
 
     private static boolean runTests(String[] args) {
         // Test sorting algorithms.
+        BucketSort.main(args);
         TreeSort.main(args);
         HeapSort.main(args);
         MergeSort.main(args);

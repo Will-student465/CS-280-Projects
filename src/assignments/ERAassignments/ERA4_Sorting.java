@@ -1,12 +1,12 @@
 package assignments.ERAassignments;
 
-import assignments.sorting.MergeSort;
+import assignments.sorting.HeapSort;
 
 import java.util.Random;
 
 import java.util.ArrayList;
 
-public class ERA4_Sorting<T extends Comparable<T>> extends MergeSort<Integer> {
+public class ERA4_Sorting<T extends Comparable<T>> extends HeapSort<Integer> {
 
     public static void main(String[] args) {
 
