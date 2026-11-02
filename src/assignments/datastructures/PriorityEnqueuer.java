@@ -1,5 +1,7 @@
 package assignments.datastructures;
 
+import adt.PriorityQueue;
+
 
 /// A type of Queue that uses O(N) runtime for DeQueuing in favor of O(1) EnQueuing to the end of a Vector.
 ///
@@ -26,9 +28,9 @@ public class PriorityEnqueuer<T extends Comparable<T>> extends Vector<T> impleme
      */
     public T dequeue () {
         int s = 0;
-        for (int i = 0; i < this.length() - 1; i ++) {
-            if (this.at(i).compareTo(this.at(i + 1)) <= 0){
-                s = i+ 1;
+        for (int i = 1; i < this.length(); i ++) {
+            if (this.at(i).compareTo(this.at(s)) < 0){
+                s = i;
             }
         }
         return delete(s);
@@ -50,21 +52,23 @@ public class PriorityEnqueuer<T extends Comparable<T>> extends Vector<T> impleme
      * @return the value of the element to be DeQueued next
      */
     public T peek() {
-        T s = this.at(0);
-        for (int i = 0; i < this.length() - 1; i ++) {
-            if (this.at(i).compareTo(this.at(i + 1)) <= 0){
-                s = this.at(i+1);
+        int s = 0;
+        for (int i = 1; i < this.length(); i ++) {
+            if (this.at(i).compareTo(this.at(s)) < 0){
+                s = i;
             }
         }
-        return s;
+        return this.at(s);
     }
 
     
     /**
-     * Checks if PriorityEnQueuer passes interface validation.
-     * @param queue the interface validation tests to use.
+     * Run validation tests.
+     * @param args command-line args
      */
-    static void validate(PriorityEnqueuer<Integer> queue) {
+    public static void main(String[] args) {
+        PriorityQueue.validate(new PriorityEnqueuer<Integer>());
 
+        System.out.println("PriorityEnqueuer passed all tests.");
     }
 }

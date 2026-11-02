@@ -149,6 +149,22 @@ public class Vector<T> implements List<T>, Iterable<T>, Stack<T> {
         return false; // Otherwise, return false
     }
 
+
+    /**
+     * Check if the list contains a given value.
+     * @param value the value to look for
+     * @return the index of the element
+     */
+    public int find(T value) {
+        // Check for given value in array
+        for (int i = 0; i < this.size; i++) { // i increments through whole list
+            if (array[i].equals(value)) { // if given value is found, return index
+                return i;
+            }
+        }
+        return size;
+    }
+
     
     /**
      * Insert an item into the list.

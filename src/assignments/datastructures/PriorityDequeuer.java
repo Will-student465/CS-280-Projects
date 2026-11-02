@@ -1,11 +1,13 @@
 package assignments.datastructures;
 
+import adt.PriorityQueue;
+
 
 /// A type of stack that uses O(N) time to EnQueue each element to the queue in a sorted manner
 /// in favor of O(1) DeQueuing runtime.
 ///
 /// @param <T> the type of each element
-public class PriorityDequeuer<T extends Comparable<T>> extends Vector<T> implements adt.PriorityQueue<T> {
+public class PriorityDequeuer<T extends Comparable<T>> extends Vector<T> implements PriorityQueue<T> {
 
 
     /** 
@@ -14,7 +16,7 @@ public class PriorityDequeuer<T extends Comparable<T>> extends Vector<T> impleme
      * @return the element removed
      */
     public T dequeue() {
-        return pop();
+        return delete(0);
     }
 
 
@@ -53,17 +55,19 @@ public class PriorityDequeuer<T extends Comparable<T>> extends Vector<T> impleme
      * @return the next element to be DeQueued
      */
     public T peek() {
-        return this.at(this.length() - 1);
+        return this.at(0);
     }
 
 
 
     /**
-     * Checks if PriorityDequeuer passes interface validation.
-     * @param queue the interface validation tests to use.
+     * Run validation tests.
+     * @param args command-line args
      */
-    static void validate(PriorityDequeuer<Integer> queue){
+    public static void main(String[] args) {
+        PriorityQueue.validate(new PriorityDequeuer<Integer>());
 
+        System.out.println("PriorityDequeuer passed all tests");
     }
-    
+
 }
