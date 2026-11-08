@@ -7,9 +7,7 @@ import assignments.datastructures.Vector;
 /// then decreases the distance between compared elements and repeats
 /// finishes by comparing adjacent elements resulting in a sorted array
 /// 
-/// 
-/// 
-/// 
+/// @param <T> the type of elements
 public class ShellSort<T extends Comparable<T>> extends Vector<T> {
     
 

@@ -42,9 +42,6 @@ public class VectorSet<T extends Comparable<T>> implements Set<T> {
     }
 
 
-    //public static void validate(Set<> Set) {
-
-    //}
 
     /**
      * Run validation tests.

@@ -25,9 +25,29 @@ public class RadixSort<T extends Comparable<T>>  {
         int[] count = new int[10];
 
         
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) { // counts each occurrence of a digit
             int digit = (array[i] / place) % 10;
             count[digit]++;
+        }
+
+
+        for (int i = 1; i < 10; i++) { // converts count into a cumulative count
+            count[i] += count[i - 1];
+        }
+
+
+        for (int i = length - 1; i >= 0; i--) { // builds output array
+
+            int digit = (array[i] / place) % 10;
+
+            output[count[digit] - 1] = array[i];
+
+            count[digit]--;
+        }
+
+
+        for (int i = 0; i < length; i++) {
+            array[i] = output[i];
         }
     }
 }
