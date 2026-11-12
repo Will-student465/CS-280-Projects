@@ -283,19 +283,11 @@ public class MinHeap<T extends Comparable<T>> extends Vector<T> implements adt.P
 
 
     /**
-     * Checks if MinHeap passes interface validation.
-     * @param queue the interface validation tests to use.
-     */
-    static void validate(MinHeap<Integer> queue) {
-
-    }
-
-
-    /**
      * Run validation tests.
      * @param args command-line args
      */
     public static void main(String[] args) {
+        adt.PriorityQueue.validate(new MinHeap<Integer>());
         Tree.validate(new MinHeap<Integer>());
 
         MinHeap<Integer> heap = new MinHeap<>();
