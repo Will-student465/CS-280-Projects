@@ -1,7 +1,5 @@
 package assignments.datastructures;
 
-import assignments.datastructures.Vector;
-
 import adt.Set;
 
 import java.util.Iterator;
@@ -15,7 +13,7 @@ import java.util.Iterator;
 /// No single index can contain more than 5 elements.
 /// 
 /// @param <T> the type of each element
-public class HashSet<T extends Comparable<T>> implements Set<T> {
+public class HashSet<T> implements Set<T> {
     
     private VectorSet<T>[] array;
     private int size;
@@ -120,7 +118,7 @@ public class HashSet<T extends Comparable<T>> implements Set<T> {
         
         VectorSet<T>[] old = array;
 
-        array = (VectorSet<T>[]) new VectorSet[old.length * 2];
+        array = (VectorSet<T>[]) new VectorSet[old.length * 2 + 1];
 
         for (int i = 0; i < array.length; i++) {
             array[i] = new VectorSet<>();

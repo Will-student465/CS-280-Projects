@@ -28,6 +28,8 @@ public class Test {
 
     private static boolean runTests(String[] args) {
         // Test sorting algorithms.
+        RadixSort.main(args);
+        ShellSort.main(args);
         BucketSort.main(args);
         TreeSort.main(args);
         HeapSort.main(args);
