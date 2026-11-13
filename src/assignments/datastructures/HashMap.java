@@ -87,7 +87,7 @@ public class HashMap<K, V> implements adt.Map<K, V> {
     /**
      * Adds a new Key Value pair into the HashMap.
      * 
-     * @param Key the key of the pair to be added
+     * @param key the key of the pair to be added
      * @param value the value of the pair to be added
      * @return the previous value if the given key already had a value, otherwise null
      */
