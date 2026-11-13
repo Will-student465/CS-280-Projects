@@ -1,10 +1,7 @@
 package assignments.datastructures;
 
-import java.security.Key;
 import java.util.Iterator;
 import adt.OrderedPair;
-
-import adt.Map;
 
 /**
  * Implements a Map of VectorSets filled with Key-Value-Pairs backed by an array.
