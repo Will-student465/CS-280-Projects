@@ -44,6 +44,7 @@ public class Test {
         Vector.main(args); // Vector test
 
         // Test data structures.
+        HashMap.main(args);
         HashSet.main(args);
         TreeSet.main(args);
         VectorSet.main(args);
