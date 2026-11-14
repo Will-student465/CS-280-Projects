@@ -374,12 +374,26 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
      * @return true if the value is in the tree, otherwise false
      */
     public boolean contains(T value) {
-        Iterator<T> cursor = this.levelorder();
+        return containsHelper(root, value);
+    }
 
-        while (cursor.hasNext()) {
-            if (cursor.next().compareTo(value) == 0) return true;
+    private boolean containsHelper(Node cursor, T value) {
+
+        if (cursor == null) {
+            return false;
         }
-        return false;
+
+        int temp = value.compareTo(cursor.data);
+
+        if (temp == 0) {
+            return true;
+        }
+
+        if (temp < 0) {
+            return containsHelper(cursor.left, value);
+        }
+
+        return containsHelper(cursor.right, value);
     }
 
     // NOTE: You're going to add more public methods here on the second day of trees.
