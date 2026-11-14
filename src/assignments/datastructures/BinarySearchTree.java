@@ -30,31 +30,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
     }
 
     /**
-     * Manually construct a tree so we can test iterator methods.
-     * 
-     * NOTE: You will remove this method once we've learned how to add.
-     * 
-     * @param demo a specific sequence of numbers defined in the main method
-     */
-    public void fillForDay1Tests(T[] demo) {
-        this.root = new Node(demo[0]);
-        this.root.left = new Node(demo[1]);
-        this.root.left.left = new Node(demo[2]);
-        this.root.left.right = new Node(demo[3]);
-        this.root.left.left.right = new Node(demo[4]);
-        this.root.left.right.left = new Node(demo[5]);
-        this.root.left.left.right.right = new Node(demo[6]);
-        this.root.right = new Node(demo[7]);
-        this.root.left.left.right.right.left = new Node(demo[8]);
-        this.root.left.right.right = new Node(demo[9]);
-        this.root.left.right.left.right = new Node(demo[10]);
-        this.root.left.right.left.left = new Node(demo[11]);
-        this.root.left.right.right.right = new Node(demo[12]);
-        this.root.left.right.left.right.right = new Node(demo[13]);
-        this.root.left.left.right.right.right = new Node(demo[14]);
-    }
-
-    /**
      * Compute the number of items in this tree.
      * @return the number of items
      */
