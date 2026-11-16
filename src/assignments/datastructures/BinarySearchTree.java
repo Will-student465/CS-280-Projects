@@ -402,7 +402,10 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
         // Build a sample tree.
         Integer[] numbers = {4, -4, -6, 0, -6, -3, -5, 5, -6, 0, -3, -4, 3, -3, -5};
         BinarySearchTree<Integer> tree = new BinarySearchTree<>();
-        tree.fillForDay1Tests(numbers);     // NOTE: To be replaced once we learn how to add.
+        
+        for (int i : numbers) {
+            tree.add(i);
+        }
 
         // Check structure.
         assert tree.length() == 15;

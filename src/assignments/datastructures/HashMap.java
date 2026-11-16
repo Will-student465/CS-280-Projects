@@ -3,6 +3,8 @@ package assignments.datastructures;
 import java.util.Iterator;
 import adt.OrderedPair;
 
+import adt.Map;
+
 /**
  * Implements a Map of VectorSets filled with Key-Value-Pairs backed by an array.
  * The key of each keyvalue pair is hashed to find the array index to store it.
@@ -192,6 +194,10 @@ public class HashMap<K, V> implements adt.Map<K, V> {
      * @param args command-line args
      */
     public static void main(String[] args) {
+
+        Map.validate(new HashMap<>());
+
+
         HashMap<Integer, String> test = new HashMap<>();
 
 
