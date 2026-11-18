@@ -3,6 +3,7 @@ package graphs;
 import java.util.Set;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashSet;
 
 public class AdjacencyList {
     private List<List<Integer>> edges;
@@ -41,7 +42,7 @@ public class AdjacencyList {
      * @param G the graph, as an AdjacencyMatrix
      */
     public AdjacencyList(AdjacencyMatrix G) {
-        // TODO implement this method
+        this(G.getVertices(), G.getEdges());
     }
 
     /**
@@ -52,7 +53,12 @@ public class AdjacencyList {
      * @return Set<Integer>
      */
     public Set<Integer> getVertices() {
-        // TODO implement this method
+        Set<Integer> ver = new HashSet<>();
+
+        for (int i = 0; i < edges.size(); i++) {
+            ver.add(i);
+        }
+        return ver;
     }
 
     /**
@@ -60,7 +66,14 @@ public class AdjacencyList {
      * @return Set<Edge>
      */
     public Set<Edge> getEdges() {
-        // TODO implement this method
+        Set<Edge> edge = new HashSet<>();
+
+        for (int i = 0; i < edges.size(); i++) {
+            for (int j = 0; j < edges.get(i).size(); j++) {
+                edge.add(new Edge(i, j));
+            }
+        }
+        return edge;
     }
 
 

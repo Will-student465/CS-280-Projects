@@ -21,7 +21,12 @@ public class Edge {
      * @return true iff o is also an edge, with the same source and target
      */
     public boolean equals(Object o) {
-        // TODO implement this method
+        if (!(o instanceof Edge)) {
+            return false;
+        }
+
+        Edge other = (Edge) o;
+        return this.src == other.src && this.tgt == other.tgt;
     }
 
     /**
@@ -33,6 +38,6 @@ public class Edge {
      * @return a hash
      */
     public int hashCode() {
-        // TODO implement this method
-    }
+        return 7 * src + tgt;
+       }
 }

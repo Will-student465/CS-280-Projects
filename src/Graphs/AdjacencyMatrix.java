@@ -2,6 +2,8 @@ package graphs;
 
 import java.util.Set;
 
+import java.util.HashSet;
+
 public class AdjacencyMatrix {
     private boolean[][] matrix;
 
@@ -34,7 +36,7 @@ public class AdjacencyMatrix {
      * @param G the graph, as an AdjacencyList
      */
     public AdjacencyMatrix(AdjacencyList G) {
-        // TODO implement this method
+        this(G.getVertices(), G.getEdges());
     }
 
     /**
@@ -45,7 +47,12 @@ public class AdjacencyMatrix {
      * @return Set<Integer>
      */
     public Set<Integer> getVertices() {
-        // TODO implement this method
+        Set<Integer> ver = new HashSet<>();
+
+        for (int i = 0; i < matrix.length; i++) {
+            ver.add(i);
+        }
+        return ver;
     }
 
     /**
@@ -53,6 +60,16 @@ public class AdjacencyMatrix {
      * @return Set<Edge>
      */
     public Set<Edge> getEdges() {
-        // TODO implement this method
+        Set<Edge> edge = new HashSet<>();
+
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix.length; j++) {
+
+                if (matrix[i][j]) {
+                    edge.add(new Edge(i, j));
+                }
+            }
+        }
+        return edge;
     }
 }

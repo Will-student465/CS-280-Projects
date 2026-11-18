@@ -8,6 +8,12 @@ import java.util.Scanner;
 
 import java.io.PrintWriter;
 
+import assignments.datastructures.Vector;
+
+import java.util.Collections;
+
+import java.util.Random;
+
 
 public class Sudoku {
 
@@ -29,7 +35,7 @@ public class Sudoku {
             String line = scan.nextLine();
 
             for (int c = 0; c < 9; c++) {
-                char ch = line.charAt(c);
+                char ch = c < line.length() ? line.charAt(c) : ' ';
 
                 if (ch == ' ') {
                     board[r][c] = 0;
@@ -203,9 +209,12 @@ public class Sudoku {
         }
     }
 
-
+    private int maxSolutions = 100;
     private int solutions = 0;
     public void Solutions() {
+        if (solutions >= maxSolutions){
+            return;
+        }
 
         int[] empty = findBestSquare();
 
@@ -238,10 +247,104 @@ public class Sudoku {
     }
 
 
+    private int[][] copy() {
+        int[][] copy = new int[9][9];
+
+        for (int r=0; r < 9; r++) {
+            for (int c = 0; c < 9; c++) {
+                copy[r][c] = board[r][c];
+            }
+        }
+        return copy;
+    }
+
+
+    public boolean generateSolved() {
+        int[] empty = findBestSquare();
+
+        if (empty == null) {
+            return true;
+        }
+
+        int r = empty[0];
+        int c = empty[1];
+
+        Vector<Integer> vec = new Vector<>();
+
+        for (int i = 1; i <= 9; i++) {
+            vec.push(i);
+        }
+
+        Random rand = new Random();
+
+        for (int i = vec.length() - 1; i > 0; i--) {
+
+            int j = rand.nextInt(i + 1);
+
+            int temp = vec.at(i);
+
+            vec.set(i, vec.at(j));
+            vec.set(j, temp);
+        }
+
+        for (int i = 0; i < vec.length(); i++) {
+            int value = vec.at(i);
+
+            if (doable(r, c, value)) {
+
+                board[r][c] = value;
+
+                if (generateSolved()) {
+                    return true;
+                }
+                board[r][c] = 0;
+            }
+        }
+        return false;
+    }
+
+
+    public void generatePuzzleBoard(int clues) {
+
+        generateSolved();
+
+        Random rand = new Random();
+
+        int f = 81;
+
+        while (f > clues) {
+
+            int r = rand.nextInt(9);
+            int c = rand.nextInt(9);
+
+            if (board[r][c] == 0) {
+                continue;
+            }
+
+            int temp = board[r][c];
+
+            board[r][c] = 0;
+
+
+            // Tests to ensure "solvability"
+            Sudoku test = new Sudoku(copy());
+
+            test.Solutions();
+
+            if (test.getSolutionCount() != 1) {
+
+                board[r][c] = temp;
+            }
+            else {
+                f--;
+            }
+        }
+    }
+
+
     public static void main(String[] args) throws FileNotFoundException {
         
-        Sudoku sudoku = new Sudoku("C:\\Users\\willi\\Downloads\\Unsolvable - Degenerate.txt");
-
+        Sudoku sudoku = new Sudoku("C:\\Users\\willi\\Downloads\\Solvable - Easy.txt");
 
         if (sudoku.checkContradiction()) {
             System.out.println("Puzzle contains a contradiction.");
@@ -255,6 +358,10 @@ public class Sudoku {
             sudoku.Solutions();
 
             sudoku.closeOutputFile();
+
+            if (sudoku.getSolutionCount() == 0) {
+                System.out.println("Puzzle has no solution.");
+            }
 
             System.out.println("Solutions found: " + sudoku.getSolutionCount());
         }
